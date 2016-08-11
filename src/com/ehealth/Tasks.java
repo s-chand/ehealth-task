@@ -4,16 +4,20 @@ import java.util.*;
 
 /**
  * Created by Samuel on 8/10/2016.
+ *
+ * Please note that validation in this code has been limited based on the fact that it has been tailored to test specification
  */
 public class Tasks {
     /**
      * The Compact function is responsible for running the compact array code
+     * Solution to Question 3
      *
-     * @param arr
+     * @param arr function parameter
+     *
      */
     public static void compact(int[] arr) {
         int size = arr.length;
-        ArrayList err = new ArrayList();
+        ArrayList<Integer> err = new ArrayList<>();
 
         if (size > 0) {
             err.add(arr[0]);
@@ -37,8 +41,10 @@ public class Tasks {
      * The Rotate function is responsible for calling the
      * reverse function and also prints out the result
      *
-     * @param nums
-     * @param k
+     * Solution to Question 4
+     *
+     * @param nums parameter 1 for rotate function
+     * @param k parameter 2 for rotate function
      */
     public static void rotate(int[] nums, int k) { // k = 2
         k %= nums.length;
@@ -57,12 +63,12 @@ public class Tasks {
     }
 
     /**
-     * The Reverse function serves as utility for the rotate
-     * function to separate the action of reversing the data in the specified array
+     * The Reverse function serves as utility for the Rotate
+     * function for Question 4 to separate the action of reversing the data in the specified array
      *
-     * @param nums
-     * @param start
-     * @param end
+     * @param nums first parameter for reverse function representing the input array of integers
+     * @param start second parameter for reverse function representing the starting point for rotation
+     * @param end third parameter for reverse function representing the end point got rotation
      */
     public static void reverse(int[] nums, int start, int end) {
         while (start < end) {
@@ -78,8 +84,10 @@ public class Tasks {
      * Find_Chars_NN is a method that executes the find chars question using an order N * N approach
      * The two loops each represent an O(n) operation making it an O(N*N)
      *
-     * @param string1
-     * @param string2
+     * Solution to Question 2: Part 1
+     *
+     * @param string1 first parameter for find_chars_NN function
+     * @param string2 second parameter for find_chars_NN function
      */
     public static void find_chars_NN(String string1, String string2) {
         String result = "";
@@ -100,8 +108,10 @@ public class Tasks {
     /**
      * The find_chars_N methods attempts to solve the problem using an order of N i.e O(N)
      *
-     * @param string1
-     * @param string2
+     * Solution to Question 2: Part 2
+     *
+     * @param string1 first parameter for find_chars_N function
+     * @param string2 second parameter for find_chars_N function
      */
 
     public static void find_chars_N(String string1, String string2) {
@@ -117,16 +127,43 @@ public class Tasks {
         System.out.println(result);
     }
 
-    public static int gcd(int a, int b) {
-        if (b == 0) return a;
-        return gcd(b, a%b);
-    }
+
+    /**
+     *
+     * Solution to Question 5
+     *
+     *
+     * The LCM function
+     * This function accepts two parameters, an integer array and a number n that is the length of the array.
+     * This was included so as to enable me reuse the function.
+     * During declaration, please include the array size.
+     * @param a first parameter for LCM function representing the input array
+     * @param n second parameter for LCM function. Stands for the size of the input array to process
+     * @return integer
+     */
     public static int lcm(int[] a, int n) {
+
         int res = 1, i;
         for (i = 0; i < n; i++) {
             res = res*a[i]/gcd(res, a[i]);
         }
         return res;
+    }
+
+    /**
+     * Supporting function for Question 5
+     *
+     *
+     * The GCD function serves as a utility function for the LCM.
+     * It computes the Greatest Common Divisor of two numbers.
+     * These numbers are supplied in succession by the LCM function from the input array
+     * @param a first parameter
+     * @param b second paramter
+     * @return integer
+     */
+    public static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a%b);
     }
 }
 
